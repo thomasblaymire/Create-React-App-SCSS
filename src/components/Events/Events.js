@@ -1,18 +1,26 @@
 import React from 'react';
 
 import classes from './Events.scss';
-import EventItem from '../Events/EventItem/EventItem';
+import EventItem from './EventItem/EventItem';
 
-const events = ( props ) => {
+const Events = ( props ) => {
+
+    console.log(props.events);
+
     return (
         <div className={classes.Events}>
 
-            {this.}
-            <EventItem 
-                event={}/>
+        {props.events.map(event => (
+
+            <EventItem
+                title={event.name}
+                image={event.images[8].url}
+                status={event.dates.status.code}
+                location={event._embedded.venues[0].name} />
+        ))}
 
         </div>
     );
 }
 
-export default events;
+export default Events;

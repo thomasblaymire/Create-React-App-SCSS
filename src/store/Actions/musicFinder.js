@@ -22,6 +22,7 @@ export const fetchEvents = (movie) => {
     return dispatch => {
         axios.get(`${ROOT_URL}keyword=${TERM}&countryCode=GB&apikey=${API_KEY}`)
             .then(response => {
+                console.table(response);
                 dispatch(setEvents(response.data))
             } )
             .catch( error => {
