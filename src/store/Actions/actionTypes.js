@@ -1,0 +1,2 @@
+export const SET_EVENTS = 'SET_EVENTS';
+export const FETCH_EVENTS_FAILED = 'FETCH_EVENTS_FAILED';
