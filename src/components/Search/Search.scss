@@ -1,0 +1,21 @@
+.Search input {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 3rem;
+    border: none;
+    background: transparent;
+    border-bottom: solid 2px #FFF;
+    font-size: 2rem;
+    color: #FFF;
+    outline: none;
+}
+
+.Search input::placeholder {
+    color: #FFF;
+}
+
+
+

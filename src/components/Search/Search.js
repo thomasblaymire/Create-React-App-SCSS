@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
-import Input from '../UI/Input/Input';
+
+import classes from './Search.scss';
 
 class Search extends Component {
+
     render() {
         return (
-            <Input />
+            <div className={classes.Search}>
+             <input 
+                placeholder="Please search for an event"
+                value={this.props.inputValue} 
+                onChange={this.props.onInputChange}/>
+            </div>
         );
     }
 }
