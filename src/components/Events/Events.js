@@ -9,14 +9,16 @@ const Events = ( props ) => {
         <div className={classes.Events}>
 
         {props.events.map(event => (
-            <div key={event.id} className={classes.EventsItem}>
+            <span key={event.id}>
                 <EventItem
+                    id={event.id}
+                    handleEventClick={props.handleEventClick}
                     title={event.name}
                     onInputChange={props.onInputChange}
                     image={event.images[8].url}
                     status={event.dates.status.code}
                     location={event._embedded.venues[0].name} />
-            </div>
+            </span>
         ))}
 
         </div>

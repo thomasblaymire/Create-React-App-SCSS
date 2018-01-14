@@ -44,6 +44,10 @@ class MusicFinder extends Component {
         this.getEvents();
     }
 
+    handleEventClick() {
+        console.log('Clicked');
+    }
+
     render() {
         let event = ''; // Make this into an error handler when no events found.
 
@@ -51,6 +55,7 @@ class MusicFinder extends Component {
             event = (
                 <Utility>
                     <Events
+                        handleEventClick={this.handleEventClick}
                         events={this.state.events}
                         inputChanged={this.searchUpdated} />
                 </Utility>
