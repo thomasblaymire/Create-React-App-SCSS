@@ -31,7 +31,7 @@ class MusicFinder extends Component {
 
         axios.get(`${ROOT_URL}keyword=${TERM}&countryCode=GB&apikey=${API_KEY}`)
         .then(response => {
-            console.log(response.data._embedded.events);
+            console.log('HIT' + response.data._embedded.events);
             this.setState( { events: response.data._embedded.events } );
         } )
         .catch( error => {
@@ -41,7 +41,7 @@ class MusicFinder extends Component {
 
     updateInputValue(evt) {
         this.setState({searchTerm: evt.target.value});
-        this.getEvents();
+            this.getEvents();  
     }
 
     handleEventClick() {
