@@ -1,4 +1,4 @@
-import * as actionTypes from '../Actions/actionTypes';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     events: null,
@@ -7,15 +7,9 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case actionTypes.setEvents:
+        case actionTypes.FETCH_EVENTS:
         return {
             ...state,
-            events: {
-                name: action.events.name,
-                description: action.events.description,
-                location: action.events.location,
-                image: action.events.image
-            },
             error: false
         };
         case actionTypes.FETCH_EVENTS_FAILED:

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import EventItem from '../../components/Events/EventItem/EventItem';
 import axios from 'axios';
 
 class MusicItem extends Component {

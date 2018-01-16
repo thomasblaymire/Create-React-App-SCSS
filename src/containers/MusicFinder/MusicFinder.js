@@ -1,47 +1,33 @@
+import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import React, { Component } from 'react';
 
-import * as musicActions from '../../store/Actions/index';
+import Events from '../../components/Events/Events';
 import Search from '../../components/Search/Search';
 import Utility from '../../hoc/Utility/Utility';
-import Events from '../../components/Events/Events';
 import classes from './MusicFinder.scss';
+
+import * as musicFinderActions from '../../store/actions/index';
 
 class MusicFinder extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            events: [],
             searchTerm: '',
             error: false
         }
         this.updateInputValue = this.updateInputValue.bind(this)
     }
 
-    componentDidMount() {
-        this.getEvents();
-    }
-
-    getEvents(){
-        const ROOT_URL = "https://app.ticketmaster.com/discovery/v2/events.json?";
-        const API_KEY = "RK1RVG7Twn245zul4fNP4E3HuhsP7Lk1";
-        const TERM = this.state.searchTerm;        
-
-        axios.get(`${ROOT_URL}keyword=${TERM}&countryCode=GB&apikey=${API_KEY}`)
-        .then(response => {
-            console.log('HIT' + response.data._embedded.events);
-            this.setState( { events: response.data._embedded.events } );
-        } )
-        .catch( error => {
-            this.setState({ error: true });
-        } );
+    componentWillMount() {
+        console.log(this.props);
+        this.props.onFetchEvents();
     }
 
     updateInputValue(evt) {
         this.setState({searchTerm: evt.target.value});
-            this.getEvents();  
+        this.onFetchEvents();  
     }
 
     handleEventClick() {
@@ -49,14 +35,17 @@ class MusicFinder extends Component {
     }
 
     render() {
-        let event = ''; // Make this into an error handler when no events found.
+ 
+        console.log('events are ' + this.props.evts);
 
-        if(this.state.events) {
-            event = (
+        let events = null;
+
+        if(this.props.evts) {
+            events = (
                 <Utility>
                     <Events
                         handleEventClick={this.handleEventClick}
-                        events={this.state.events}
+                        events={this.props.evts}
                         inputChanged={this.searchUpdated} />
                 </Utility>
             );
@@ -65,11 +54,16 @@ class MusicFinder extends Component {
         return (
             <Utility>
                 <div className={classes.Header}>
-                    <Search
+                    <div className={classes.HeaderContainer}>
+                        <h3 className={classes.HeaderTitle}>Searh the latest events around the wolrd.</h3>
+                        <Search
                         onInputChange={this.updateInputValue}
                         searchTerm={this.state.searchTerm} />
+                        <button className={classes.HeaderButton}>Search</button>
+                    </div>
                 </div>
-                {event}
+                
+                {events}
             </Utility>
         );
     }
@@ -77,16 +71,16 @@ class MusicFinder extends Component {
 
 const mapStateToProps = state => {
     return {
-        // events: state.events,
+        evts: state.events,
         error: state.error
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        // onFetchEvents: () => dispatch(musicActions.fetchEvents())
+        onFetchEvents: () => dispatch(musicFinderActions.fetchEvents())
     }
 }
 
 
-export default MusicFinder;
+export default connect(mapStateToProps, mapDispatchToProps)(MusicFinder, axios);

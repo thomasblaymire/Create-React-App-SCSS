@@ -1,6 +1,49 @@
 .Header {
-    height: 30vh;
+    height: 100vh;
     background: #565f70;
     position: relative;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(14, 14, 14, 0.8),
+        rgba(14, 14, 14, 0.8)),
+        url('../../assets/main-header.jpg');
+    background-size: cover;
+}
 
+.HeaderContainer {
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    width: 80%;
+}
+
+.HeaderTitle 
+{
+    width: 60%;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 4rem;
+}
+
+.HeaderButton {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    width: auto;
+    color: #fff;
+    text-decoration: none;
+    background: #7068d5;
+    font-family: gt_walsheimmedium,Arial;
+    border-radius: 35px;
+    padding: 17px 29px;
+    border: 2px solid transparent;
+    -ms-flex-negative: 0;
+    right: 500px;
+    position: absolute;
+    flex-shrink: 0;
+    vertical-align: bottom;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out,border-color .2s ease-in-out,color .2s ease-in-out;
 }
