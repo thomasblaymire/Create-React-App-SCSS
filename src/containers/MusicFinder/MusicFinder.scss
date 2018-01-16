@@ -12,7 +12,7 @@
 
 .HeaderContainer {
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: 5%;
     width: 80%;
 }
@@ -35,13 +35,14 @@
     color: #fff;
     text-decoration: none;
     background: #7068d5;
-    font-family: gt_walsheimmedium,Arial;
     border-radius: 35px;
-    padding: 17px 29px;
+    padding: 13px 29px;
     border: 2px solid transparent;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
     -ms-flex-negative: 0;
-    right: 500px;
-    position: absolute;
+    position: relative;
+    right: 40px;
     flex-shrink: 0;
     vertical-align: bottom;
     cursor: pointer;

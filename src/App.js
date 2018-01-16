@@ -11,13 +11,10 @@ class App extends Component {
     return (
       <Utility>
         <div className="App">
-        <Switch> 
-          <Route path="/" exact component={MusicFinder}></Route>
-          <Route path="/events/:id" component={MusicItem}></Route>
-        </Switch>
-
-
-        
+          <Switch> 
+            <Route path="/" exact component={MusicFinder}></Route>
+            <Route path="/events/:id" component={MusicItem}></Route>
+          </Switch>
         </div>
       </Utility>
     );

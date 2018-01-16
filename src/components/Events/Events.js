@@ -5,7 +5,7 @@ import EventItem from './EventItem/EventItem';
 
 const Events = ( props ) => {
     
-    console.log(props);
+    console.log('[Events.js] ' + props);
 
     return (
         <div className={classes.Events}>

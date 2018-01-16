@@ -20,14 +20,15 @@ class MusicFinder extends Component {
         this.updateInputValue = this.updateInputValue.bind(this)
     }
 
-    componentWillMount() {
-        console.log(this.props);
-        this.props.onFetchEvents();
+    componentDidMount() {
+        this.props.onFetchEvents(this.state.searchTerm);
+        console.log('Props on mount' + this.props.error);
     }
 
     updateInputValue(evt) {
         this.setState({searchTerm: evt.target.value});
-        this.onFetchEvents();  
+        this.props.onFetchEvents(this.state.searchTerm);  
+        console.log(this.props);
     }
 
     handleEventClick() {
@@ -36,8 +37,6 @@ class MusicFinder extends Component {
 
     render() {
  
-        console.log('events are ' + this.props.evts);
-
         let events = null;
 
         if(this.props.evts) {
@@ -71,8 +70,8 @@ class MusicFinder extends Component {
 
 const mapStateToProps = state => {
     return {
-        evts: state.events,
-        error: state.error
+        evts: state.musicFinder.events,
+        error: state.musicFinder.error
     }
 }
 

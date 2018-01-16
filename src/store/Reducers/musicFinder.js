@@ -7,9 +7,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case actionTypes.FETCH_EVENTS:
+        case actionTypes.SET_EVENTS:
         return {
             ...state,
+            // We set this mapping up within the setEvents action 
+            events: action.events,
             error: false
         };
         case actionTypes.FETCH_EVENTS_FAILED:
