@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import classes from './Search.scss';
 
 class Search extends Component {
@@ -8,7 +7,7 @@ class Search extends Component {
         return (
             <div className={classes.Search}>
              <input 
-                placeholder="Please search for an event"
+                placeholder="Search for an event, artist or show.."
                 value={this.props.inputValue} 
                 onChange={this.props.onInputChange}/>
             </div>

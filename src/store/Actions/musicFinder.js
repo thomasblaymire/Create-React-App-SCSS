@@ -16,14 +16,13 @@ export const setEvents = events => {
   };
 };
 
-// Pass the call the searchTerm from the container
+// Pass the call the 'searchTerm' from the container component
 export const fetchEvents = searchTerm => {
   const ROOT_URL = "https://app.ticketmaster.com/discovery/v2/events.json?";
   const TERM = searchTerm;
 
   return dispatch => {
-    axios
-      .get(`${ROOT_URL}keyword=${TERM}&countryCode=GB&apikey=${API_KEY}`)
+    axios.get(`${ROOT_URL}keyword=${TERM}&countryCode=GB&apikey=${API_KEY}`)
       .then(response => {
         console.log(response.data._embedded.events);
         dispatch(setEvents(response.data._embedded.events));
@@ -34,9 +33,6 @@ export const fetchEvents = searchTerm => {
   };
 };
 
-// https://app.ticketmaster.com/discovery/v2/events/G5vHZ4em3UsuXjson?&countryCode=GB&apikey=RK1RVG7Twn245zul4fNP4E3HuhsP7Lk1
-// https://app.ticketmaster.com/discovery/v2/events/1AdfZ4eGkRb7M51.json?apikey=RK1RVG7Twn245zul4fNP4E3HuhsP7Lk1
-
 export const setSingleEvent = event => {
   return {
     type: actionTypes.GET_SINGLE_EVENT,
@@ -45,19 +41,15 @@ export const setSingleEvent = event => {
 };
 
 export const fetchSingleEvent = eventId => {
-
-    console.log('fetchSingleEventAction ' + eventId);
     const ID = eventId;
-
-  return dispatch => {
-    axios
-      .get(`https://app.ticketmaster.com/discovery/v2/events/${ID}.json?&apikey=${API_KEY}`)
-      .then(response => {
-        console.log(response.data);
-        dispatch(setSingleEvent(response.data));
-      })
-      .catch(error => {
-        dispatch(fetchEventsFailed());
-      });
-  };
+    return dispatch => {
+      axios.get(`https://app.ticketmaster.com/discovery/v2/events/${ID}.json?&apikey=${API_KEY}`)
+        .then(response => {
+          console.log(response.data);
+          dispatch(setSingleEvent(response.data));
+        })
+        .catch(error => {
+          dispatch(fetchEventsFailed());
+        });
+    };
 };

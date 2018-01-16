@@ -38,9 +38,7 @@ class MusicFinder extends Component {
 
 
     render() {
-
         let events = null;
-
         if(this.props.evts) {
             events = (
                 <Utility>
@@ -82,6 +80,5 @@ const mapDispatchToProps = dispatch => {
         onFetchEvents: (searchTerm) => dispatch(musicFinderActions.fetchEvents(searchTerm))
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(MusicFinder, axios);
