@@ -56,7 +56,8 @@ class MusicFinder extends Component {
             <Utility>
                 <div className={classes.Header}>
                     <div className={classes.HeaderContainer}>
-                        <h3 className={classes.HeaderTitle}>Searh the latest events around the wolrd.</h3>
+                        <h3 className={classes.HeaderTitle}>Share something incredible.</h3>
+                        <span className={classes.HeaderSubtitle}>Find an event near you.</span>
                         <Search
                         onInputChange={this.updateInputValue}
                         searchTerm={this.state.searchTerm} />

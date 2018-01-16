@@ -8,22 +8,28 @@
         rgba(14, 14, 14, 0.8)),
         url('../../assets/main-header.jpg');
     background-size: cover;
+    background-position-y: 50%;
 }
 
 .HeaderContainer {
     position: absolute;
-    top: 30%;
+    top: 15%;
     left: 5%;
     width: 80%;
+    font-family: 'Nunito', sans-serif;
+    color: white;
 }
 
-.HeaderTitle 
-{
+.HeaderTitle {
     width: 60%;
-    color: white;
-    font-family: 'Nunito', sans-serif;
     font-size: 3rem;
-    margin-bottom: 4rem;
+    margin-bottom: 0;
+}
+
+.HeaderSubtitle {
+    display: block;
+    font-weight: 300;
+    font-size: 1.5rem;
 }
 
 .HeaderButton {
@@ -34,7 +40,7 @@
     width: auto;
     color: #fff;
     text-decoration: none;
-    background: #7068d5;
+    background: #14798d;
     border-radius: 35px;
     padding: 13px 29px;
     border: 2px solid transparent;
@@ -47,6 +53,10 @@
     vertical-align: bottom;
     cursor: pointer;
     transition: background-color .2s ease-in-out,border-color .2s ease-in-out,color .2s ease-in-out;
+}
+
+.HeaderButton:hover {
+    background: #25b9d3;
 }
 
 .EventTitleStatus {
