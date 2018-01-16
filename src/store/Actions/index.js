@@ -1,4 +1,5 @@
 export {
     fetchEventsFailed,
-    fetchEvents
+    fetchEvents,
+    fetchSingleEvent
 } from './musicFinder';

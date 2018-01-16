@@ -15,35 +15,37 @@ class MusicFinder extends Component {
 
         this.state = {
             searchTerm: '',
-            error: false
+            error: false,
+            searchStatus: 'All events'
         }
         this.updateInputValue = this.updateInputValue.bind(this)
     }
 
     componentDidMount() {
-        this.props.onFetchEvents(this.state.searchTerm);
-        console.log('Props on mount' + this.props.error);
+        this.props.onFetchEvents();
     }
 
     updateInputValue(evt) {
         this.setState({searchTerm: evt.target.value});
-        this.props.onFetchEvents(this.state.searchTerm);  
-        console.log(this.props);
+
+        if (evt.target.value === '') {
+            this.props.onFetchEvents();
+        }  
+
+        this.props.onFetchEvents(this.state.searchTerm); 
+        this.setState({searchStatus: 'Custom events'});
     }
 
-    handleEventClick() {
-        console.log('Clicked');
-    }
 
     render() {
- 
+
         let events = null;
 
         if(this.props.evts) {
             events = (
                 <Utility>
+                    <h3 className={classes.EventTitleStatus}>{this.state.searchStatus}</h3>
                     <Events
-                        handleEventClick={this.handleEventClick}
                         events={this.props.evts}
                         inputChanged={this.searchUpdated} />
                 </Utility>
@@ -61,7 +63,6 @@ class MusicFinder extends Component {
                         <button className={classes.HeaderButton}>Search</button>
                     </div>
                 </div>
-                
                 {events}
             </Utility>
         );
@@ -77,7 +78,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchEvents: () => dispatch(musicFinderActions.fetchEvents())
+        onFetchEvents: (searchTerm) => dispatch(musicFinderActions.fetchEvents(searchTerm))
     }
 }
 

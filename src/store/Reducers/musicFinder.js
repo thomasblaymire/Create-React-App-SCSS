@@ -19,6 +19,12 @@ const reducer = (state = initialState, action) => {
             ...state,
             error: true
         };
+        case actionTypes.GET_SINGLE_EVENT:
+        return {
+            ...state,
+            singleEvent: action.event,
+            error: false
+        };
         default: 
             return state;
     }

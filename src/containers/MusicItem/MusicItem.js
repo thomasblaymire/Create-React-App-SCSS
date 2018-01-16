@@ -1,38 +1,53 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
+
+import * as musicFinderActions from '../../store/actions/index';
 
 class MusicItem extends Component {
 
     state = {
         singleEvents: [],
-        error: false
+        error: false,
+        eventId: ''
     }
 
     componentDidMount() {
-        // Do a HTTP call with the id from the URL
-        const ROOT_URL = "https://app.ticketmaster.com/discovery/v2/events.json?";
-        const API_KEY = "RK1RVG7Twn245zul4fNP4E3HuhsP7Lk1";
-        const TERM = this.props.match.params.id      
-
-        axios.get(`${ROOT_URL}id=${TERM}&countryCode=GB&apikey=${API_KEY}`)
-        .then(response => {
-            console.log(response.data._embedded.events);
-            console.log('HIT' + response.data_embedded.events);
-            this.setState({singleEvents: response.data._embedded.events})
-        
-        } )
-        .catch( error => {
-            this.setState({ error: true });
-        } );
+        this.setState({eventId: this.props.match.params.id});
+        this.props.onFetchSingleEvent(this.state.eventId);
     }
 
     render() {
+        console.log(this.props);
+       
+
         return (
+
+            // <div>
+            //     <h3>{this.props.singleEvent.name}</h3>
+            // </div>
+
+            // <div>
+            //     {this.props.singleEvent.map(event => (
+            //         <h3>{this.props.singleEvent.name}</h3>
+            //     ))}
+            // </div>
             <div>
-                Map over each single event events and show the dates / info / fancy stuff 
+                
             </div>
         )
     }
 }
 
-export default MusicItem;
+const mapStateToProps = state => {
+    return {
+        singleEvent: state.musicFinder.event
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchSingleEvent: (eventId) => dispatch(musicFinderActions.fetchSingleEvent(eventId))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MusicItem);

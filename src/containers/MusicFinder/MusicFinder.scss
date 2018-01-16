@@ -1,5 +1,5 @@
 .Header {
-    height: 100vh;
+    height: 70vh;
     background: #565f70;
     position: relative;
     background-image: linear-gradient(
@@ -47,4 +47,10 @@
     vertical-align: bottom;
     cursor: pointer;
     transition: background-color .2s ease-in-out,border-color .2s ease-in-out,color .2s ease-in-out;
+}
+
+.EventTitleStatus {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2rem;
+    margin-left: 6rem;
 }
