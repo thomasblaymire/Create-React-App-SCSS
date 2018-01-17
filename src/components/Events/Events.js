@@ -13,6 +13,7 @@ const Events = ( props ) => {
         {props.events.map(event => (
             <span key={event.id}>
                 <EventItem
+                    isFavourite={props.isFavourite}
                     id={event.id}
                     handleEventClick={props.handleEventClick}
                     title={event.name}

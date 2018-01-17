@@ -9,7 +9,7 @@
     overflow: hidden;
     transition: all .4s ease;
     // display: inline-flex; 
-
+    position: relative;
     display: inline-block;
     width: 23%;
     height: 300px;
@@ -40,7 +40,14 @@
     text-decoration: none;
     margin-left: 10px;
     text-align: left;
+}
 
+.EventFavoutie{
+    position: absolute;
+    width: 36px;
+    height: 35px;
+    right: 10px;
+    top: 5px;
 }
 
 .EventStatus {

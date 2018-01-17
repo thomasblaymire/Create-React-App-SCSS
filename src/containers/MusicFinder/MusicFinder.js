@@ -16,7 +16,8 @@ class MusicFinder extends Component {
         this.state = {
             searchTerm: '',
             error: false,
-            searchStatus: 'All events'
+            searchStatus: 'All events',
+            isFavourite: true
         }
         this.updateInputValue = this.updateInputValue.bind(this)
     }
@@ -44,6 +45,7 @@ class MusicFinder extends Component {
                 <Utility>
                     <h3 className={classes.EventTitleStatus}>{this.state.searchStatus}</h3>
                     <Events
+                        isFavourite={this.state.isFavourite}
                         events={this.props.evts}
                         inputChanged={this.searchUpdated} />
                 </Utility>
